@@ -1,66 +1,69 @@
 # Sam Tour Services
 
-**Sam Tour Services** – bu turistik xizmatlarni ko‘rsatishga mo‘ljallangan oddiy bot bo‘lib, u foydalanuvchilarga sayohat bo‘yicha ma‘lumot olish va xizmatlardan foydalanish imkoniyatini taqdim etadi.
+Turistik xizmatlar uchun Telegram bot — ma'lumot beradi, buyurtma qabul qiladi va hisobotni o'zi tayyorlaydi.
 
 ---
 
-## Loyihaning asosiy funksiyalari
-- **Sayohat xizmatlari haqida ma‘lumot**: Foydalanuvchilar uchun turli yo‘nalishlar, sayohat narxlari va xizmatlarning boshqa tafsilotlari haqida ma‘lumot beradi.
-- **Bot orqali so‘rov yuborish**: Foydalanuvchilar xizmatlarni buyurtma qilish yoki batafsil ma‘lumot olish uchun botga murojaat qilishlari mumkin.
-- **Interfeysning qulayligi**: Oddiy va tushunarli interfeys, yangi foydalanuvchilar uchun ham qulay.
+## Muammo
 
----
+Turistik agentlikda bir xil savollar kuniga o'nlab marta takrorlanadi: qanday yo'nalishlar bor, narxi qancha, nima kiradi. Har biriga telefon orqali javob beriladi.
 
-## O‘rnatish
-Loyihani ishlatish uchun quyidagi amallarni bajaring:
+Kechqurun va dam olish kunlarida esa hech kim javob bermaydi — mijoz kutadi yoki boshqa agentlikka murojaat qiladi.
 
-1. Repozitoriyani klonlash:
-   ```bash
-   git clone https://github.com/AbduazizBobomalikovNode/Sam-Tour-Services.git
-   cd Sam-Tour-Services
-   ```
+Oy oxirida yana bir ish boshlanadi: qancha buyurtma bo'lgani, qaysi yo'nalish ko'proq sotilgani haqidagi hisobotni kimdir qo'lda yig'adi.
 
-2. Kerakli kutubxonalarni o‘rnatish:
-   ```bash
-   npm install
-   ```
+## Nima qiladi
 
-3. Dastur ishga tushirilishi:
-   ```bash
-   node index.js
-   ```
+- **Xizmatlarni ko'rsatadi** — yo'nalishlar, narxlar va tafsilotlar bot ichida
+- **Buyurtma qabul qiladi** — so'rov bazaga tushadi, yo'qolmaydi
+- **Grafik chizadi** — qaysi yo'nalish qancha so'ralgani
+- **Excel hisobot beradi** — ochib ishlatiladigan tayyor fayl
+- **Web panel** — admin uchun alohida ko'rinish
 
----
+## Qanday ishlaydi
 
-## Foydalanish
-Dastur ishga tushgandan so‘ng, foydalanuvchilar quyidagi funksiyalardan foydalanishlari mumkin:
-- Turli yo‘nalishlar va xizmatlar haqida ma‘lumot olish.
-- Buyurtma yoki so‘rov yuborish.
-- Savollar va takliflar uchun bog‘lanish.
+```
+Mijoz  ──bot──►  yo'nalish va narxni ko'radi
+                       └─► buyurtma qoldiradi
+                             └─► MongoDB
+                                   ├─► grafik    (Chart.js → rasm)
+                                   └─► Excel     (ExcelJS)
+```
 
----
+Grafik server tomonida chiziladi: `chartjs-node-canvas` rasm yasaydi va uni to'g'ridan-to'g'ri chatga yuborish mumkin — mijoz hech narsa ochmaydi.
 
-## Hissa qo‘shish
-Agar loyihani rivojlantirishga hissa qo‘shmoqchi bo‘lsangiz:
+## O'rnatish
 
-1. Repozitoriyani fork qiling.
-2. O‘zgarishlarni amalga oshiring va commit qiling:
-   ```bash
-   git commit -m "O‘zgarish tavsifi"
-   ```
-3. Pull request yuboring.
+```bash
+git clone https://github.com/AbduazizBobomalikovNode/Sam-Tour-Services.git
+cd Sam-Tour-Services
+npm install
 
----
+cp .env.example .env
+npm start
+```
 
+Kerak bo'ladi: Node.js 16+ va MongoDB.
 
-## 📧 Bog'lanish
+## Environment
 
-Loyiha haqida savollaringiz bo'lsa, quyidagi manzilga murojaat qiling:
-- **Muallif:** [Abduaziz Bobomalikov](https://github.com/AbduazizBobomalikovNode)
-- **Telegram:** [@AbduazizBobomalikov](https://t.me/@Bobomalikov_Abduaziz)
+| O'zgaruvchi | Nima uchun |
+|---|---|
+| `BOT_TOKEN` | [@BotFather](https://t.me/BotFather) bergan token |
+| `DATE_URL` | MongoDB ulanish satri |
 
+## Tuzilma
 
-## Litsenziya
+```
+index.js      server
+bot.js        bot mantiqi
+router/       web panel marshrutlari
+views/        Pug shablonlari
+db/           MongoDB ulanishi
+resurs/       yordamchi funksiyalar
+docs/         landing sahifa
+```
 
-Ushbu loyiha [MIT Litsenziyasi](https://opensource.org/licenses/MIT) ostida tarqatiladi.
+## Texnologiyalar
 
+Node.js · Telegraf · Express · MongoDB · Pug · Chart.js · ExcelJS
