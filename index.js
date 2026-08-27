@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Telegraf, Markup, session, Scenes } = require("telegraf");
 const fs = require('fs');
 const express = require('express');
@@ -14,7 +15,8 @@ const admin = require('./router/admin');
 const db = require("./db/db");
 const startKeyboard = Markup.keyboard([['📝Руйхатдан утиш', '👨🏻‍💻Биз ҳақимизда']]).resize()
 
-const BOT_TOKEN = "***OLIB-TASHLANDI***";
+const BOT_TOKEN = process.env.BOT_TOKEN;
+if (!BOT_TOKEN) throw new Error("BOT_TOKEN environment o'zgaruvchisi berilmagan");
 
 const bot = new Telegraf(BOT_TOKEN);
 

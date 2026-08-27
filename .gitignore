@@ -1,0 +1,22 @@
+# bog'liqliklar
+node_modules/
+
+# sirlar — hech qachon commit qilinmasin
+.env
+.env.*
+!.env.example
+
+# loglar va vaqtinchalik fayllar
+*.log
+logs/
+npm-debug.log*
+
+# muharrir va OS
+.DS_Store
+.vscode/
+.idea/
+
+# build
+dist/
+build/
+.cache/

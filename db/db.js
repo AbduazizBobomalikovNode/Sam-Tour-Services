@@ -1,5 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.DATE_URL || '***OLIB-TASHLANDI***/Bots?retryWrites=true&w=majority';
+const uri = process.env.DATE_URL;
+if (!uri) throw new Error('DATE_URL environment o\'zgaruvchisi berilmagan');;
 const client = new MongoClient(uri);
 
 const getDate = require("../resurs/function/format");
