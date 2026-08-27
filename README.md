@@ -4,6 +4,8 @@ Turistik xizmatlar uchun Telegram bot — ma'lumot beradi, buyurtma qabul qiladi
 
 ---
 
+**Sahifa:** [abduazizbobomalikovnode.github.io/Sam-Tour-Services/](https://abduazizbobomalikovnode.github.io/Sam-Tour-Services/)
+
 ## Muammo
 
 Turistik agentlikda bir xil savollar kuniga o'nlab marta takrorlanadi: qanday yo'nalishlar bor, narxi qancha, nima kiradi. Har biriga telefon orqali javob beriladi.
