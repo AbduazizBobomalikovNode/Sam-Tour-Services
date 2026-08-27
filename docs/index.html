@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Sam Tour Services — Turistik xizmatlar uchun bot</title>
+<meta name="description" content="Sayohat yoʻnalishlari, narxlar va xizmatlar haqida maʼlumot beradi; foydalanuvchi shu yerda buyurtma qoldiradi."/>
+<meta property="og:title" content="Sam Tour Services"/>
+<meta property="og:description" content="Sayohat yoʻnalishlari, narxlar va xizmatlar haqida maʼlumot beradi; foydalanuvchi shu yerda buyurtma qoldiradi."/>
+<meta property="og:type" content="website"/>
+<style>
+  :root { --accent: #14b8a6; --bg: #0b0d12; --ink: #e8e6e0; --ink2: #9aa1ad; --line: rgba(232,230,224,.12); }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--ink); min-height: 100vh;
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    display: flex; flex-direction: column; align-items: center; padding: 6vh 20px 40px;
+    background-image: radial-gradient(900px 500px at 50% -10%, #14b8a61f, transparent 70%);
+  }
+  main { width: 100%; max-width: 680px; }
+  .icon { font-size: 46px; line-height: 1; margin-bottom: 18px; }
+  h1 { font-size: clamp(30px, 6vw, 44px); letter-spacing: -.02em; font-weight: 700; }
+  .tagline { color: var(--accent); font-size: 15px; letter-spacing: .06em; text-transform: uppercase; margin: 10px 0 22px; font-weight: 600; }
+  .lede { font-size: clamp(16px, 2.4vw, 19px); color: #cfd3da; }
+  h2 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink2); margin: 40px 0 14px; font-weight: 600; }
+  ul { list-style: none; }
+  li { padding: 11px 0 11px 26px; position: relative; border-bottom: 1px solid var(--line); color: #cfd3da; }
+  li::before { content: ""; position: absolute; left: 4px; top: 20px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .stack { display: flex; flex-wrap: wrap; gap: 8px; }
+  .stack span { border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px; font-size: 13px; color: var(--ink2); }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
+  a.btn {
+    display: inline-flex; align-items: center; gap: 9px; text-decoration: none;
+    padding: 13px 22px; border-radius: 10px; font-weight: 600; font-size: 15px;
+    border: 1px solid var(--line); color: var(--ink); transition: border-color .18s, transform .18s;
+  }
+  a.btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+  a.btn.primary { background: var(--accent); color: #0b0d12; border-color: var(--accent); }
+  footer { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink2); font-size: 14px; }
+  footer a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  footer a:hover { border-color: var(--accent); }
+  @media (prefers-reduced-motion: reduce) { a.btn { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="icon">🧭</div>
+  <h1>Sam Tour Services</h1>
+  <div class="tagline">Turistik xizmatlar uchun bot</div>
+  <p class="lede">Sayohat yoʻnalishlari, narxlar va xizmatlar haqida maʼlumot beradi; foydalanuvchi shu yerda buyurtma qoldiradi.</p>
+
+  <h2>Nima qiladi</h2>
+  <ul>
+    <li>Yoʻnalishlar, narxlar va xizmat tafsilotlari haqida maʼlumot</li>
+    <li>Bot orqali buyurtma va soʻrov yuborish</li>
+    <li>Yangi foydalanuvchi uchun ham tushunarli oddiy interfeys</li>
+  </ul>
+
+  <h2>Texnologiyalar</h2>
+  <div class="stack"><span>Node.js</span><span>Express</span><span>Telegram Bot API</span></div>
+
+  <div class="actions">
+    <a class="btn primary" href="https://github.com/AbduazizBobomalikovNode/Sam-Tour-Services">Kodni koʻrish →</a>
+    <a class="btn" href="https://4d-portfolio.vercel.app">Boshqa loyihalar</a>
+  </div>
+
+  <footer>
+    <b>Abduaziz Bobomalikov</b> — <a href="https://4d-portfolio.vercel.app">4D Portfolio</a> · <a href="https://t.me/Bobomalikov_Abduaziz">Telegram</a>
+  </footer>
+</main>
+</body>
+</html>
