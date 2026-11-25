@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 440" role="img" aria-labelledby="ttl" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif">
+<title id="ttl">Sam Tour Services qanday ishlaydi: mijoz botda ro'yxatdan o'tadi, kontakt MongoDB'ga yoziladi, adminlar guruhiga xabar boradi va boshqaruv panelida ko'rinadi</title>
+<style>
+.t{fill:#e6edf3;font-size:14px;font-weight:600}
+.s{fill:#8b949e;font-size:11px}
+.n{fill:#58a6ff;font-size:11px;font-weight:700;letter-spacing:1px}
+.c{fill:#c9d1d9;font-size:10.5px}
+.w{fill:#fff;font-size:10.5px;text-anchor:middle}
+.k{fill:#e6edf3;font-size:10.5px;text-anchor:middle}
+.box{fill:#161b22;stroke:#30363d;stroke-width:1.5}
+.bub{fill:#21262d}
+.key{fill:#30363d}
+.wire{stroke:#30363d;stroke-width:2;fill:none;stroke-dasharray:3 6;animation:flow 1s linear infinite}
+.dot{fill:#58a6ff;opacity:0;filter:drop-shadow(0 0 5px #58a6ff)}
+.fb{transform-box:fill-box}
+.u1{animation:s4 14s infinite}.b1{animation:s8 14s infinite}.u2{animation:s14 14s infinite}.b2{animation:s20 14s infinite}
+.u3{animation:s26 14s infinite}.u4{animation:s34 14s infinite}.b4{animation:s40 14s infinite}
+.msg{animation:s58 14s infinite}.file{animation:s80 14s infinite}
+.db{animation:db 14s infinite}.btn{animation:btn 14s infinite}
+.old{animation:old 14s infinite}.new{animation:new 14s infinite}
+.bar{transform-origin:bottom;animation:bar 14s infinite}
+@keyframes flow{to{stroke-dashoffset:-9}}
+@keyframes s4{0%,4%{opacity:0;transform:translateY(6px)}6%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s8{0%,8%{opacity:0;transform:translateY(6px)}10%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s14{0%,14%{opacity:0;transform:translateY(6px)}16%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s20{0%,20%{opacity:0;transform:translateY(6px)}22%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s26{0%,26%{opacity:0;transform:translateY(6px)}28%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s34{0%,34%{opacity:0;transform:translateY(6px)}36%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s40{0%,40%{opacity:0;transform:translateY(6px)}42%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s58{0%,58%{opacity:0;transform:translateY(6px)}60%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes s80{0%,80%{opacity:0;transform:translateY(6px)}82%,97%{opacity:1;transform:translateY(0)}100%{opacity:0}}
+@keyframes db{0%,47%,56%,100%{fill:#161b22;stroke:#30363d}49%,54%{fill:#12261b;stroke:#3fb950}}
+@keyframes btn{0%,71%,80%,100%{fill:#30363d}73%,78%{fill:#1f6feb}}
+@keyframes old{0%,61%{opacity:1}63%,97%{opacity:0}100%{opacity:1}}
+@keyframes new{0%,61%{opacity:0}63%,97%{opacity:1}100%{opacity:0}}
+@keyframes bar{0%,61%{transform:scaleY(.72)}70%,97%{transform:scaleY(1)}100%{transform:scaleY(.72)}}
+</style>
+
+<rect width="1000" height="440" rx="16" fill="#0d1117"/>
+<text x="30" y="38" class="t" font-size="17">Sam Tour Services qanday ishlaydi</text>
+
+<!-- wires -->
+<path class="wire" d="M290 265C325 265 320 150 353 150"/>
+<path class="wire" d="M437 150H520"/>
+<path class="wire" d="M395 184V250"/>
+
+<!-- telegram chat -->
+<rect class="box" x="30" y="56" width="260" height="364" rx="22"/>
+<path d="M30 92H290" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="52" cy="74" r="9" fill="#2aabee"/>
+<path d="M47 74l10-4-3 9-2.5-3z" fill="#fff"/>
+<text class="t" x="68" y="79" font-size="12">Sam Tour</text>
+<text class="n" x="204" y="78">1 · MIJOZ</text>
+<g class="u1"><rect x="160" y="100" width="112" height="24" rx="12" fill="#1f6feb"/><text class="w" x="216" y="116">Рўйхатдан ўтиш</text></g>
+<g class="b1"><rect class="bub" x="40" y="130" width="150" height="24" rx="10"/><text class="c" x="52" y="146">Телефон рақамингиз?</text></g>
+<g class="u2"><rect x="150" y="160" width="122" height="24" rx="12" fill="#1f6feb"/><text class="w" x="211" y="176">+998 90 000 00 01</text></g>
+<g class="b2"><rect class="bub" x="40" y="190" width="90" height="24" rx="10"/><text class="c" x="52" y="206">Исмингиз?</text></g>
+<g class="u3"><rect x="192" y="220" width="80" height="24" rx="12" fill="#1f6feb"/><text class="w" x="232" y="236">Demo User</text></g>
+<g class="u4"><rect x="202" y="250" width="70" height="24" rx="12" fill="#1f6feb"/><text class="w" x="237" y="266">Якунлаш</text></g>
+<g class="b4"><rect class="bub" x="40" y="282" width="190" height="24" rx="10"/><text x="52" y="298" fill="#3fb950" font-size="10.5">Рўйхатдан ўтдингиз</text></g>
+<rect x="42" y="382" width="236" height="26" rx="13" fill="#0d1117" stroke="#30363d"/>
+<text class="s" x="56" y="399">Xabar…</text>
+
+<!-- mongodb -->
+<text class="n" x="353" y="92">2 · BAZA</text>
+<text class="t" x="353" y="110" font-size="12">MongoDB</text>
+<path class="box db" d="M353 130v42c0 7 19 12 42 12s42-5 42-12v-42"/>
+<ellipse class="box db" cx="395" cy="130" rx="42" ry="12"/>
+<path d="M353 151c0 7 19 12 42 12s42-5 42-12" fill="none" stroke="#30363d" stroke-width="1.5"/>
+
+<!-- admin group -->
+<rect class="box" x="520" y="66" width="450" height="160" rx="12"/>
+<path d="M520 94H970" stroke="#30363d" stroke-width="1.5"/>
+<text class="t" x="534" y="85" font-size="12">Adminlar guruhi</text>
+<text class="n" x="880" y="85">3 · XABAR</text>
+<g class="msg">
+<rect class="bub" x="532" y="104" width="232" height="110" rx="10"/>
+<text x="544" y="124" fill="#e6edf3" font-size="11" font-weight="700">#1001 · yangi kontakt</text>
+<text class="c" x="544" y="144">Ismi: Demo User</text>
+<text class="c" x="544" y="162">Telefon: +998 90 000 00 01</text>
+<text class="c" x="544" y="180">Telegram: @demo_user</text>
+<text class="s" x="544" y="200">javob yozilsa — mijozga boradi</text>
+</g>
+<rect class="key btn" x="778" y="104" width="180" height="26" rx="6"/><text class="k" x="868" y="121">Bugungi kontaktlar</text>
+<rect class="key" x="778" y="136" width="180" height="26" rx="6"/><text class="k" x="868" y="153">Bot statistikasi</text>
+<g class="file">
+<rect class="bub" x="778" y="170" width="180" height="44" rx="10"/>
+<path d="M790 179h12l7 7v19a3 3 0 0 1-3 3h-16a3 3 0 0 1-3-3v-23a3 3 0 0 1 3-3z" fill="#1f8f4e"/>
+<text x="820" y="190" fill="#e6edf3" font-size="11" font-weight="700">kontaktlar.xlsx</text>
+<text class="s" x="820" y="205" font-size="10">Excel hisobot</text>
+</g>
+
+<!-- web panel -->
+<rect class="box" x="350" y="250" width="620" height="170" rx="12"/>
+<path d="M350 276H970" stroke="#30363d" stroke-width="1.5"/>
+<circle cx="366" cy="263" r="3.5" fill="#f85149"/><circle cx="378" cy="263" r="3.5" fill="#d29922"/><circle cx="390" cy="263" r="3.5" fill="#3fb950"/>
+<text class="s" x="408" y="267">localhost:8080 · boshqaruv paneli</text>
+<text class="n" x="880" y="267">4 · PANEL</text>
+<rect class="bub" x="364" y="288" width="110" height="56" rx="8"/><text class="s" x="376" y="306" font-size="10">Foydalanuvchilar</text><text class="t" x="376" y="332" font-size="19">128</text>
+<rect class="bub" x="484" y="288" width="110" height="56" rx="8"/><text class="s" x="496" y="306" font-size="10">Bugun</text>
+<text class="t old" x="496" y="332" font-size="19">3</text><text class="new" x="496" y="332" font-size="19" font-weight="600" fill="#3fb950">4</text>
+<rect class="bub" x="604" y="288" width="110" height="56" rx="8"/><text class="s" x="616" y="306" font-size="10">Jami kontakt</text>
+<text class="t old" x="616" y="332" font-size="19">57</text><text class="new" x="616" y="332" font-size="19" font-weight="600" fill="#3fb950">58</text>
+<rect x="364" y="356" width="170" height="30" rx="6" fill="#1f6f43"/><text class="w" x="449" y="375" font-size="11">Excel · bugungi</text>
+<rect x="544" y="356" width="170" height="30" rx="6" fill="#1f6f43"/><text class="w" x="629" y="375" font-size="11">Excel · hammasi</text>
+<path d="M730 396H956" stroke="#30363d" stroke-width="1.5"/>
+<g fill="#30363d">
+<rect x="736" y="366" width="12" height="30" rx="2"/><rect x="755" y="352" width="12" height="44" rx="2"/><rect x="774" y="360" width="12" height="36" rx="2"/><rect x="793" y="340" width="12" height="56" rx="2"/><rect x="812" y="348" width="12" height="48" rx="2"/><rect x="831" y="326" width="12" height="70" rx="2"/><rect x="850" y="334" width="12" height="62" rx="2"/><rect x="869" y="318" width="12" height="78" rx="2"/><rect x="888" y="330" width="12" height="66" rx="2"/><rect x="907" y="312" width="12" height="84" rx="2"/>
+</g>
+<rect class="fb bar" x="926" y="300" width="12" height="96" rx="2" fill="#58a6ff"/>
+<text class="s" x="736" y="300" font-size="10">oylar bo'yicha kontaktlar</text>
+
+<!-- moving packets -->
+<circle r="5" class="dot"><animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M290 265C325 265 320 150 353 150" keyPoints="0;0;1;1" keyTimes="0;.42;.48;1"/><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.42;.43;.47;.48;1"/></circle>
+<circle r="5" class="dot"><animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M437 150H520" keyPoints="0;0;1;1" keyTimes="0;.52;.58;1"/><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.52;.53;.57;.58;1"/></circle>
+<circle r="5" class="dot"><animateMotion dur="14s" repeatCount="indefinite" calcMode="linear" path="M395 184V250" keyPoints="0;0;1;1" keyTimes="0;.55;.61;1"/><animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;0;1;1;0;0" keyTimes="0;.55;.56;.60;.61;1"/></circle>
+</svg>
