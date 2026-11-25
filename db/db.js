@@ -1,38 +1,36 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = process.env.DATE_URL;
-if (!uri) throw new Error('DATE_URL environment o\'zgaruvchisi berilmagan');;
-const client = new MongoClient(uri);
-
+const { MongoClient } = require('mongodb');
 const getDate = require("../resurs/function/format");
-if (client)
-    console.log('DataBesega ulanish hosil qilindi!')
 
-let contacts = null;
-let users = null;
-let db = null;
 class DB {
     constructor() {
-        (async function () {
-            await client.connect()
-            db = client.db('samtour_sevice');
-
-            contacts = await db.collection("contacts")
-            if (contacts)
-                console.log('contacts jadvaliga ulanish hosil qilindi!');
-            users = await db.collection("users")
-            if (users)
-                console.log('users jadvaliga ulanish hosil qilindi!');
-        })();
-        this.contacts = contacts;
-        this.users = users;
+        this.client = null;
+        this.contacts = null;
+        this.users = null;
+        this.ready = null;
     }
+
+    // Bazaga ulanadi. Qayta chaqirilsa o'sha promise qaytadi.
+    init() {
+        if (this.ready) return this.ready;
+        const uri = process.env.DATE_URL;
+        if (!uri) throw new Error("DATE_URL environment o'zgaruvchisi berilmagan");
+        this.client = new MongoClient(uri);
+        this.ready = this.client.connect().then(() => {
+            const db = this.client.db('samtour_sevice');
+            this.contacts = db.collection('contacts');
+            this.users = db.collection('users');
+            console.log("Ma'lumotlar bazasiga ulandi.");
+        });
+        return this.ready;
+    }
+
     async addUser(id) {
         try {
-            if (!(await users.findOne({ id: id }))) {
-                // let date = (new Date()).toLocaleString().slice(0,10).replaceAll(",","");
-                await users.insertOne({ id: id, date: getDate() });
+            await this.ready;
+            if (!(await this.users.findOne({ id: id }))) {
+                await this.users.insertOne({ id: id, date: getDate() });
             } else {
-                await users.updateOne(
+                await this.users.updateOne(
                     { id: id }, {
                     $set: { id: id },
                     $currentDate: { lastModified: true }
@@ -42,98 +40,68 @@ class DB {
             console.log(error);
         }
     }
+
     async getAllUsers(e) {
+        await this.ready;
         if (e == 'count') {
-            try {
-                return users.countDocuments({});
-            } catch (error) {
-
-            }
+            return this.users.countDocuments({});
         }
-        var k = [];
-        try {
-            let list = await users.find({}, { projection: { _id: 0 } }).sort({ date: 1 }).toArray()
-            await list.forEach((user) => { k.push(user) });
-        } catch (error) {
-
-        }
-        return k;
+        return this.users.find({}, { projection: { _id: 0 } }).sort({ date: 1 }).toArray();
     }
 
+    // [oylar bo'yicha kontaktlar, oylar bo'yicha foydalanuvchilar] (joriy yil, 12 ta son)
     async getAllChart() {
-        var k = [];
-        var j = [];
+        await this.ready;
+        const year = (new Date()).getFullYear();
+        const k = [];
+        const j = [];
         for (let index = 0; index < 12; index++) {
-            const dateString = `${(new Date()).getFullYear()}-${(index + 1) > 9 ? index + 1 : "0" + (index + 1)}`;
-            const regex = new RegExp(`.*${dateString}.*`, 'g');
-            let list1 = await contacts.countDocuments({ date: regex });
-            let list2 = await users.countDocuments({ date: regex });
-            k[index] = list1;
-            j[index] = list2;
+            const prefix = `${year}-${String(index + 1).padStart(2, '0')}`;
+            const regex = new RegExp(`^${prefix}`);
+            k[index] = await this.contacts.countDocuments({ date: regex });
+            j[index] = await this.users.countDocuments({ date: regex });
         }
         return [k, j];
     }
 
     async getContacts(id) {
         try {
-            let result = await contacts.findOne({ id: id });
-            if (result) {
-                return result;
-            }
+            await this.ready;
+            return (await this.contacts.findOne({ id: id })) || false;
         } catch (error) {
             return false;
         }
     }
+
     async addContacts(contact) {
         try {
-            console.log(contact)
-            if (!(await contacts.findOne(contact))) {
-                await contacts.insertOne(contact);
+            await this.ready;
+            if (!(await this.contacts.findOne(contact))) {
+                await this.contacts.insertOne({ ...contact });
                 return contact;
-            } else {
-                return false;
             }
+            return false;
         } catch (error) {
-
+            console.log(error);
+            return false;
         }
     }
+
     async getAllContacts(e) {
+        await this.ready;
         if (e == 'count') {
-            try {
-                return contacts.countDocuments({});
-            } catch (error) {
-
-            }
-
+            return this.contacts.countDocuments({});
         }
-        var k = [];
-        try {
-            let list = await contacts.find({}, { projection: { _id: 0 } }).sort({ date: 1, time: 1 }).toArray()
-            await list.forEach((contact) => { k.push(contact) });
-        } catch (error) {
-
-        }
-        return k;
+        return this.contacts.find({}, { projection: { _id: 0 } }).sort({ date: 1, time: 1 }).toArray();
     }
+
     async getAllContactsDate(e) {
+        await this.ready;
         if (e == 'count') {
-            try {
-                return contacts.countDocuments({ date: getDate() });
-            } catch (error) {
-
-            }
+            return this.contacts.countDocuments({ date: getDate() });
         }
-        var k = [];
-        // let date = (new Date()).toLocaleString().slice(0,10).replaceAll(",","");
-        try {
-            let list = await contacts.find({ date: getDate() }, { projection: { _id: 0 } }).sort({ date: 1, time: 1 }).toArray()
-            await list.forEach((contact) => { k.push(contact) });
-        } catch (error) {
-
-        }
-        return k;
+        return this.contacts.find({ date: getDate() }, { projection: { _id: 0 } }).sort({ date: 1, time: 1 }).toArray();
     }
 }
 
 module.exports = new DB();
-

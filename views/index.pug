@@ -1,77 +1,143 @@
 doctype html
-html(lang='en')
+html(lang='uz')
   head
     meta(charset='UTF-8')
-    title CodePen - Pure CSS Table Highlight (vertical &amp; horizontal)
-    link(rel='stylesheet', href='/table/style.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='robots', content='noindex')
+    title Sam Tour Services — boshqaruv paneli
+    link(rel='icon', href='/logo.jpg')
+    link(rel='stylesheet', href='/panel.css')
   body
-    .container
-      table
-        thead
-          tr
-            th Column 1
-            | &#x9;&#x9;&#x9;&#x9;
-            th Column 2
-            | &#x9;&#x9;&#x9;&#x9;
-            th Column 3
-            | &#x9;&#x9;&#x9;&#x9;
-            th Column 4
-            | &#x9;&#x9;&#x9;&#x9;
-            th Column 5
-        | &#x9;&#x9;
-        tbody
-          tr
-            td Cell 1
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 2
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 3
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 4
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 5
-          | &#x9;&#x9;&#x9;
-          tr
-            td Cell 1
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 2
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 3
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 4
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 5
-          | &#x9;&#x9;&#x9;
-          tr
-            td Cell 1
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 2
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 3
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 4
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 5
-          | &#x9;&#x9;&#x9;
-          tr
-            td Cell 1
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 2
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 3
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 4
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 5
-          | &#x9;&#x9;&#x9;
-          tr
-            td Cell 1
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 2
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 3
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 4
-            | &#x9;&#x9;&#x9;&#x9;
-            td Cell 5
-    // partial
+    header.top
+      .brand
+        img.logo(src='/logo.jpg', alt='Sam Tour Services logotipi')
+        h1 Sam Tour Services — boshqaruv paneli
+      .actions
+        a.btn(href='/export.xlsx?scope=today') Bugungi kontaktlar (Excel)
+        a.btn.primary(href='/export.xlsx?scope=all') Barcha kontaktlar (Excel)
+
+    main
+      section.kpis
+        .card.kpi
+          .kpi-label Bot foydalanuvchilari
+          .kpi-value= usersCount
+        .card.kpi
+          .kpi-label Bugungi kontaktlar
+          .kpi-value.accent= todayCount
+        .card.kpi
+          .kpi-label Barcha kontaktlar
+          .kpi-value= totalCount
+
+      section.card
+        .card-head
+          h2 #{year}-yil: oylar bo'yicha
+          .legend
+            span.dot.dot-contacts
+            |  Kontaktlar
+            span.dot.dot-users
+            |  Yangi foydalanuvchilar
+        .chart-wrap
+          canvas#chart(data-months=JSON.stringify(months), data-contacts=JSON.stringify(byContacts), data-users=JSON.stringify(byUsers), role='img', aria-label='Oylar bo\'yicha kontaktlar va yangi foydalanuvchilar grafigi')
+
+      section.card
+        .card-head.wrap
+          h2 Kontaktlar
+          .toolbar
+            .tabs(role='tablist')
+              button.tab.active(type='button', data-filter='today', role='tab') Bugun
+              button.tab(type='button', data-filter='all', role='tab') Hammasi
+            input#search(type='search', placeholder='Qidirish: ism, telefon, izoh', aria-label='Qidirish', autocomplete='off')
+        if rows.length
+          .table-wrap
+            table#contacts(data-today=today)
+              thead
+                tr
+                  th №
+                  th Ism
+                  th Telefon
+                  th Telegram
+                  th Sana
+                  th Vaqt
+                  th Izoh
+              tbody
+                each r in rows
+                  tr(data-today=r.today ? '1' : '0')
+                    td.num(data-label='№')
+                    td.name(data-label='Ism')= r.name
+                    td.tnum(data-label='Telefon')= r.phone
+                    td(data-label='Telegram')= r.username || '—'
+                    td.tnum(data-label='Sana')= r.date
+                    td.tnum(data-label='Vaqt')= r.time
+                    td.note(data-label='Izoh')= r.note || '—'
+        .empty#empty(hidden)
+          p.empty-title Hech narsa topilmadi
+          p.empty-text#empty-text Hozircha kontaktlar yo'q.
+
+    script(src='/vendor/chart/chart.min.js')
+    script.
+      (function () {
+        var table = document.getElementById('contacts');
+        var rows = table ? Array.prototype.slice.call(table.tBodies[0].rows) : [];
+        var search = document.getElementById('search');
+        var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+        var empty = document.getElementById('empty');
+        var emptyText = document.getElementById('empty-text');
+        var filter = 'today';
+        var anyToday = rows.some(function (r) { return r.dataset.today === '1'; });
+        if (!anyToday) filter = 'all';
+
+        function apply() {
+          var q = search.value.trim().toLowerCase();
+          var n = 0;
+          rows.forEach(function (r) {
+            var ok = (filter === 'all' || r.dataset.today === '1') &&
+              (!q || r.textContent.toLowerCase().indexOf(q) !== -1);
+            r.hidden = !ok;
+            if (ok) { n += 1; r.cells[0].textContent = n; }
+          });
+          tabs.forEach(function (t) {
+            var on = t.dataset.filter === filter;
+            t.classList.toggle('active', on);
+            t.setAttribute('aria-selected', on ? 'true' : 'false');
+          });
+          if (table) table.parentNode.hidden = n === 0;
+          empty.hidden = n !== 0;
+          if (n === 0) {
+            emptyText.textContent = !rows.length ? "Hozircha kontaktlar yo'q."
+              : q ? "Qidiruv bo'yicha hech narsa topilmadi."
+              : "Bugun hali kontakt qoldirilmagan.";
+          }
+        }
+        tabs.forEach(function (t) {
+          t.addEventListener('click', function () { filter = t.dataset.filter; apply(); });
+        });
+        search.addEventListener('input', apply);
+        apply();
+
+        var el = document.getElementById('chart');
+        var css = getComputedStyle(document.documentElement);
+        var brand = css.getPropertyValue('--brand').trim();
+        var ink = css.getPropertyValue('--ink-2').trim();
+        new Chart(el, {
+          type: 'line',
+          data: {
+            labels: JSON.parse(el.dataset.months),
+            datasets: [
+              { label: 'Kontaktlar', data: JSON.parse(el.dataset.contacts), borderColor: brand,
+                backgroundColor: brand, tension: 0.25, borderWidth: 2.5, pointRadius: 3 },
+              { label: 'Yangi foydalanuvchilar', data: JSON.parse(el.dataset.users), borderColor: ink,
+                backgroundColor: ink, tension: 0.25, borderWidth: 2, pointRadius: 3, borderDash: [5, 4] }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: { legend: { display: false } },
+            scales: {
+              y: { beginAtZero: true, ticks: { precision: 0 }, grid: { color: '#eceff3' } },
+              x: { grid: { display: false } }
+            }
+          }
+        });
+      })();
