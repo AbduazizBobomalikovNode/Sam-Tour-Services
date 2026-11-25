@@ -49,6 +49,10 @@ Panel faqat `PANEL_PASSWORD` berilganda ishlaydi. Parol bo'lmasa har bir sahifa 
 
 ## Bot qanday ishlaydi
 
+<p align="center">
+  <img src="docs/media/how-it-works.svg" alt="Sam Tour Services qanday ishlaydi: mijoz botda ro'yxatdan o'tadi → MongoDB → adminlar guruhi va boshqaruv paneli" width="100%">
+</p>
+
 ```
 Mijoz  /start
   ├─ 📝 Рўйхатдан ўтиш ─► telefon ─► ism ─► izoh (ixtiyoriy) ─► 🔚 Якунлаш
